@@ -1,0 +1,4 @@
+---
+vector_version: "0.46.1"
+vector_arch: "amd64"
+vector_config_path: "/etc/vector/vector.toml"

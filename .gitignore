@@ -1,0 +1,11 @@
+*.tfstate
+*.tfstate.*
+
+*.tfvars.local
+*.tfvars.override
+
+*.tfvars
+
+.terraform/
+
+crash.log

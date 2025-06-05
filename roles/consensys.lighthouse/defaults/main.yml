@@ -1,0 +1,65 @@
+---
+# User and group
+lighthouse_user: lighthouse
+lighthouse_group: "{{ lighthouse_user }}"
+lighthouse_architecture: "amd64"
+lighthouse_version: "12.3.0"
+lighthouse_config_path: "/etc/lighthouse/lighthouse.toml"
+
+# Directory paths
+lighthouse_base_dir: "/opt/lighthouse"
+lighthouse_install_dir: "{{ lighthouse_base_dir }}/lighthouse-{{ lighthouse_version }}"
+lighthouse_current_dir: "{{ lighthouse_base_dir }}/current"
+lighthouse_data_dir: "{{ lighthouse_base_dir }}/data"
+lighthouse_validator_data_dir: "{{ lighthouse_base_dir }}/validatorData"
+lighthouse_config_dir: "/etc/lighthouse"
+lighthouse_log_dir: "/var/log/lighthouse"
+lighthouse_jwt_auth_file: "/etc/jwt-secret.hex"
+lighthouse_keys_dir: "{{ lighthouse_config_dir }}/keys"
+lighthouse_wallet_dir: "{{ lighthouse_config_dir }}/wallet"
+lighthouse_wallet_password_file: ""
+lighthouse_secrets_dir: "{{ lighthouse_config_dir }}/secrets"
+lighthouse_graffiti: ""
+
+lighthouse_beacon_enabled: True
+lighthouse_validator_enabled: False
+lighthouse_beacon_cmdline_args: ""
+lighthouse_validator_cmdline_args: ""
+lighthouse_beacon_custom_cmdline_args: ""
+lighthouse_validator_custom_cmdline_args: ""
+
+# Managed service config
+lighthouse_systemd_state: restarted
+lighthouse_systemd_dir: /etc/systemd/system
+lighthouse_state_updates: []
+lighthouse_state_updates_validator: []
+lighthouse_state_updates_beacon: []
+lighthouse_validator_limit_no_file: 1024
+
+# networking
+lighthouse_host_ip: ""
+lighthouse_default_ip: "127.0.0.1"
+
+# lighthouse config
+lighthouse_network: mainnet
+lighthouse_log_level: info
+
+lighthouse_p2p_port: 9000
+lighthouse_execution_urls: "http://127.0.0.1:8551"
+lighthouse_validator_beaconnodes: "http://127.0.0.1:9596"
+lighthouse_checkpoint_sync_url: "https://beaconstate-{{ lighthouse_network }}.chainsafe.io"
+lighthouse_default_fee_recipient: ""
+lighthouse_disable_deposit_contract_sync: "True"
+lighthouse_enable_doppelganger_protection: "True"
+
+# metrics
+lighthouse_metrics_enabled: "True"
+lighthouse_metrics_interface: 0.0.0.0
+lighthouse_metrics_port: 8008
+lighthouse_validator_metrics_port: 8009
+
+# rest
+lighthouse_http_enabled: True
+lighthouse_http_port: 5051
+lighthouse_http_interface: "127.0.0.1"
+lighthouse_http_cors: "*"

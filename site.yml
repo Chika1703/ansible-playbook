@@ -1,0 +1,103 @@
+- hosts: clickhouse
+  roles:
+    - clickhouse
+
+- hosts: vector
+  roles:
+    - vector
+
+- hosts: lighthouse
+  roles:
+    - consensys.lighthouse
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# - name: Install Clickhouse
+#   hosts: clickhouse
+#   become: true
+#   handlers:
+#     - name: Start Clickhouse service
+#       ansible.builtin.service:
+#         name: clickhouse-server
+#         state: restarted
+#   tasks:
+#     - name: Download Clickhouse DEB packages
+#       ansible.builtin.get_url:
+#         url: "https://packages.clickhouse.com/deb/pool/main/c/{{ item }}/{{ item }}_{{ clickhouse_version }}_amd64.deb"
+#         dest: "/tmp/{{ item }}_{{ clickhouse_version }}_amd64.deb"
+#         mode: '0644'
+#       loop: "{{ clickhouse_packages }}"
+#       notify: Start Clickhouse service
+# 
+#     - name: Install Clickhouse DEB packages
+#       ansible.builtin.apt:
+#         deb: "/tmp/{{ item }}_{{ clickhouse_version }}_amd64.deb"
+#         state: present
+#       loop: "{{ clickhouse_packages }}"
+#       notify: Start Clickhouse service
+# 
+#     - name: Flush handlers
+#       ansible.builtin.meta: flush_handlers
+# 
+#     - name: Create database
+#       ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
+#       register: create_db
+#       failed_when: create_db.rc != 0 and create_db.rc != 82
+#       changed_when: create_db.rc == 0
+
+# - name: Install and configure Vector
+#   hosts: all
+#   become: true
+#   vars:
+#     vector_version: "0.46.1"
+#     vector_arch: "amd64"
+#   handlers:
+#     - name: Restart Vector service
+#       ansible.builtin.service:
+#         name: vector
+#         state: restarted
+#   tasks:
+#     - name: Download Vector .deb package
+#       ansible.builtin.get_url:
+#         url: "https://apt.vector.dev/pool/v/ve/vector_{{ vector_version }}-1_{{ vector_arch }}.deb"
+#         dest: "/tmp/vector_{{ vector_version }}.deb"
+#         mode: '0644'
+# 
+#     - name: Install Vector package
+#       ansible.builtin.apt:
+#         deb: "/tmp/vector_{{ vector_version }}.deb"
+#         state: present
+# 
+#     - name: Create Vector configuration directory
+#       ansible.builtin.file:
+#         path: /etc/vector
+#         state: directory
+#         mode: '0755'
+# 
+#     - name: Deploy Vector configuration
+#       ansible.builtin.template:
+#         src: "{{ playbook_dir }}/templates/vector-config.toml.j2"
+#         dest: /etc/vector/vector.toml
+#         mode: '0644'
+#       notify: Restart Vector service
+# 
+#     - name: Ensure Vector service is enabled and started
+#       ansible.builtin.service:
+#         name: vector
+#         enabled: true
+#         state: started
+# 

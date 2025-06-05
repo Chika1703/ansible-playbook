@@ -1,0 +1,26 @@
+lighthouse:
+  hosts:
+
+    deb-1:
+      ansible_host: 81.19.136.70
+
+
+
+
+vector:
+  hosts:
+
+
+    el-1:
+      ansible_host: 81.19.136.48
+
+
+
+clickhouse:
+  hosts:
+
+    deb-1:
+      ansible_host: 81.19.136.70
+
+
+
