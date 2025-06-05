@@ -335,6 +335,9 @@ ansible-playbook/
 
 ## Скриншоты
 
+* **Запуск playbook**
+![Check Mode](https://github.com/Chika1703/ansible-playbook/blob/main/img/1.jpg)
+
 ---
 
 ## Заключение
